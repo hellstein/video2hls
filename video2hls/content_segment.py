@@ -4,7 +4,7 @@ from pathlib import Path
 
 class ContentSegment(Processor):
 
-    cmd_pattern = "ffmpeg -i {} -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 23 -g 61 -keyint_min 61 -sc_threshold 0 -b:v 5300k -maxrate 5300k -bufsize 10600k -hls_time 6 -hls_playlist_type vod {}/video.m3u8"
+    cmd_pattern = "ffmpeg -i '{}' -c:a aac -ar 48000 -b:a 128k -c:v h264 -profile:v main -crf 23 -g 61 -keyint_min 61 -sc_threshold 0 -b:v 5300k -maxrate 5300k -bufsize 10600k -hls_time 6 -hls_playlist_type vod '{}'/video.m3u8"
 
     def get_segment_cmd(self):
         meta = self.video.vmeta
@@ -14,15 +14,10 @@ class ContentSegment(Processor):
 
     def run(self):
         cmd = self.get_segment_cmd()
+        print(cmd)
         if not os.path.exists(self.dest):
             os.mkdir(self.dest)
             print("Directory " , self.dest ,  " Created ")
 
         os.system(cmd)
-
-
-
-if __name__ == "__main__":
-    pass
-
 

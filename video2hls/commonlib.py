@@ -11,7 +11,7 @@ def get_meta_from_filename(fname):
 
 def encoding_meta_to_filename(meta):
     import hashlib
-    m = hashlib.sha256()
+    m = hashlib.md5()
     m.update(meta["name"].encode())
     # m.update(key)
     return m.hexdigest()

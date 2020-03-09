@@ -1,11 +1,12 @@
 [tool.poetry]
 name = "video2hls"
-version = "0.1.0"
+version = "0.1.2"
 description = ""
 authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
+click = "^7.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
